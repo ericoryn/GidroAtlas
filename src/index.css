@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Water-themed color palette */
+    --background: 210 40% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* Primary - Deep ocean blue */
+    --primary: 210 80% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Light sky blue */
+    --secondary: 200 60% 94%;
+    --secondary-foreground: 210 80% 30%;
+
+    --muted: 210 30% 95%;
+    --muted-foreground: 215 15% 45%;
+
+    /* Accent - Teal/Cyan */
+    --accent: 185 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 30% 88%;
+    --input: 210 30% 88%;
+    --ring: 210 80% 50%;
+
+    --radius: 0.75rem;
+
+    /* Category colors for water object conditions */
+    --category-1: 142 71% 45%;
+    --category-2: 142 77% 73%;
+    --category-3: 43 96% 56%;
+    --category-4: 27 96% 61%;
+    --category-5: 0 84% 60%;
+
+    /* Priority colors */
+    --priority-high: 0 84% 60%;
+    --priority-medium: 43 96% 56%;
+    --priority-low: 142 71% 45%;
+
+    /* Gradients */
+    --gradient-water: linear-gradient(135deg, hsl(210 80% 40%), hsl(185 70% 45%));
+    --gradient-header: linear-gradient(90deg, hsl(210 80% 35%), hsl(200 70% 45%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 98%));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(215 25% 15% / 0.05);
+    --shadow-md: 0 4px 12px hsl(215 25% 15% / 0.08);
+    --shadow-lg: 0 8px 24px hsl(215 25% 15% / 0.12);
+    --shadow-glow: 0 0 20px hsl(210 80% 50% / 0.2);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 25% 15%;
+    --sidebar-primary: 210 80% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 60% 94%;
+    --sidebar-accent-foreground: 210 80% 30%;
+    --sidebar-border: 210 30% 88%;
+    --sidebar-ring: 210 80% 50%;
+  }
+
+  .dark {
+    --background: 215 30% 10%;
+    --foreground: 210 40% 95%;
+
+    --card: 215 30% 14%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 215 30% 14%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 200 80% 55%;
+    --primary-foreground: 215 30% 10%;
+
+    --secondary: 215 25% 20%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 215 25% 18%;
+    --muted-foreground: 210 20% 60%;
+
+    --accent: 185 70% 50%;
+    --accent-foreground: 215 30% 10%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 25% 22%;
+    --input: 215 25% 22%;
+    --ring: 200 80% 55%;
+
+    --sidebar-background: 215 30% 12%;
+    --sidebar-foreground: 210 40% 95%;
+    --sidebar-primary: 200 80% 55%;
+    --sidebar-primary-foreground: 215 30% 10%;
+    --sidebar-accent: 215 25% 18%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 215 25% 22%;
+    --sidebar-ring: 200 80% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-card/80 backdrop-blur-md border border-border/50;
+    box-shadow: var(--shadow-md);
+  }
+
+  .water-gradient {
+    background: var(--gradient-water);
+  }
+
+  .header-gradient {
+    background: var(--gradient-header);
+  }
+
+  .category-badge {
+    @apply px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .category-1 {
+    @apply bg-[hsl(var(--category-1))] text-white;
+  }
+
+  .category-2 {
+    @apply bg-[hsl(var(--category-2))] text-foreground;
+  }
+
+  .category-3 {
+    @apply bg-[hsl(var(--category-3))] text-foreground;
+  }
+
+  .category-4 {
+    @apply bg-[hsl(var(--category-4))] text-white;
+  }
+
+  .category-5 {
+    @apply bg-[hsl(var(--category-5))] text-white;
+  }
+
+  .priority-high {
+    @apply bg-[hsl(var(--priority-high))] text-white;
+  }
+
+  .priority-medium {
+    @apply bg-[hsl(var(--priority-medium))] text-foreground;
+  }
+
+  .priority-low {
+    @apply bg-[hsl(var(--priority-low))] text-white;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.3s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  font-family: 'Inter', sans-serif;
+  background: hsl(var(--background));
+}
+
+.leaflet-popup-content-wrapper {
+  @apply bg-card rounded-lg shadow-lg border border-border;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+}
+
+.leaflet-popup-tip {
+  @apply bg-card;
+}
+
+.custom-marker {
+  @apply rounded-full border-2 border-white shadow-md;
+  width: 24px;
+  height: 24px;
+}
