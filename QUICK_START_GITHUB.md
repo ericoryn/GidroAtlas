@@ -16,7 +16,7 @@ git commit -m "Initial commit: GidroAtlas - платформа монитори�
 git branch -M main
 
 # 5. Добавление удаленного репозитория (замените YOUR_USERNAME)
-git remote add origin https://github.com/YOUR_USERNAME/GidroAtlas.git
+git remote add origin https://github.com/ericoryn/GidroAtlas.git
 
 # 6. Отправка кода на GitHub
 git push -u origin main
