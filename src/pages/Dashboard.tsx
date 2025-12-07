@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpDown, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -13,9 +13,9 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Header } from '@/components/layout/Header';
-import { mockWaterObjects } from '@/data/mockData';
+
 import { calculatePriority, useStore } from '@/store/useStore';
-import { CATEGORY_COLORS, RESOURCE_TYPE_LABELS, PRIORITY_LABELS } from '@/types';
+import { CATEGORY_COLORS, RESOURCE_TYPE_LABELS, PRIORITY_LABELS, CONDITION_LABELS } from '@/types';
 import { cn } from '@/lib/utils';
 
 type SortField = 'name' | 'region' | 'resourceType' | 'conditionCategory' | 'passportAge' | 'priorityScore' | 'priorityLevel';
@@ -25,14 +25,16 @@ const ITEMS_PER_PAGE = 10;
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const { isAuthenticated, user } = useStore();
-  
+  const { isAuthenticated, user, waterObjects, fetchWaterObjects } = useStore();
+
+  useEffect(() => {
+    fetchWaterObjects();
+  }, [fetchWaterObjects]);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [sortField, setSortField] = useState<SortField>('priorityScore');
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc');
   const [currentPage, setCurrentPage] = useState(1);
-
-  // Redirect if not expert
   if (!isAuthenticated || user?.role !== 'expert') {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -46,11 +48,11 @@ export default function Dashboard() {
   }
 
   const processedObjects = useMemo(() => {
-    return mockWaterObjects.map((obj) => {
+    return waterObjects.map((obj) => {
       const priority = calculatePriority(obj);
       const passportDate = new Date(obj.passportDate);
       const passportAge = Math.floor((new Date().getTime() - passportDate.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
-      
+
       return {
         ...obj,
         passportAge,
@@ -62,8 +64,6 @@ export default function Dashboard() {
 
   const filteredAndSorted = useMemo(() => {
     let result = processedObjects;
-
-    // Filter by search
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       result = result.filter(
@@ -72,11 +72,9 @@ export default function Dashboard() {
           obj.region.toLowerCase().includes(query)
       );
     }
-
-    // Sort
     result.sort((a, b) => {
       let comparison = 0;
-      
+
       switch (sortField) {
         case 'name':
           comparison = a.name.localeCompare(b.name);
@@ -101,7 +99,7 @@ export default function Dashboard() {
           comparison = levelOrder[a.priorityLevel] - levelOrder[b.priorityLevel];
           break;
       }
-      
+
       return sortOrder === 'asc' ? comparison : -comparison;
     });
 
@@ -124,7 +122,7 @@ export default function Dashboard() {
   };
 
   const SortableHeader = ({ field, children }: { field: SortField; children: React.ReactNode }) => (
-    <TableHead 
+    <TableHead
       className="cursor-pointer hover:bg-muted/50 transition-colors"
       onClick={() => handleSort(field)}
     >
@@ -141,14 +139,14 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
-      
+
       <main className="flex-1 container mx-auto py-6 px-4">
         <div className="mb-6">
           <Button variant="ghost" size="sm" onClick={() => navigate('/')} className="mb-4">
             <ArrowLeft className="h-4 w-4 mr-2" />
             К карте
           </Button>
-          
+
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold text-foreground">Приоритеты обследования</h1>
@@ -156,7 +154,7 @@ export default function Dashboard() {
                 Всего объектов: {filteredAndSorted.length}
               </p>
             </div>
-            
+
             <div className="relative w-full sm:w-64">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
@@ -198,7 +196,7 @@ export default function Dashboard() {
                           className="w-3 h-3 rounded-full"
                           style={{ backgroundColor: CATEGORY_COLORS[obj.conditionCategory] }}
                         />
-                        <span>Кат. {obj.conditionCategory}</span>
+                        <span>{CONDITION_LABELS[obj.conditionCategory]}</span>
                       </div>
                     </TableCell>
                     <TableCell>{obj.passportAge} лет</TableCell>
@@ -227,7 +225,6 @@ export default function Dashboard() {
             </Table>
           </div>
 
-          {/* Pagination */}
           {totalPages > 1 && (
             <div className="flex items-center justify-between px-4 py-3 border-t border-border">
               <p className="text-sm text-muted-foreground">

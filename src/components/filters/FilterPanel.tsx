@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
 import { useStore } from '@/store/useStore';
-import { REGIONS, RESOURCE_TYPE_LABELS, CATEGORY_COLORS, type ConditionCategory, type WaterResourceType } from '@/types';
+import { REGIONS, RESOURCE_TYPE_LABELS, CATEGORY_COLORS, CONDITION_LABELS, type ConditionCategory, type WaterResourceType } from '@/types';
 import { cn } from '@/lib/utils';
 
 const uniqueRegions = [
@@ -44,9 +44,8 @@ export function FilterPanel() {
 
   return (
     <>
-      {/* Overlay for mobile */}
       {isFilterPanelOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-foreground/20 backdrop-blur-sm z-30 lg:hidden"
           onClick={() => setFilterPanelOpen(false)}
         />
@@ -75,7 +74,6 @@ export function FilterPanel() {
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 space-y-6 scrollbar-thin">
-            {/* Search */}
             <div className="space-y-2">
               <Label>Поиск</Label>
               <Input
@@ -85,7 +83,6 @@ export function FilterPanel() {
               />
             </div>
 
-            {/* Region */}
             <div className="space-y-2">
               <Label>Регион</Label>
               <Select
@@ -106,7 +103,6 @@ export function FilterPanel() {
               </Select>
             </div>
 
-            {/* Resource Type */}
             <div className="space-y-3">
               <Label>Тип ресурса</Label>
               <div className="space-y-2">
@@ -125,7 +121,6 @@ export function FilterPanel() {
               </div>
             </div>
 
-            {/* Water Type */}
             <div className="space-y-3">
               <Label>Тип воды</Label>
               <RadioGroup
@@ -147,7 +142,6 @@ export function FilterPanel() {
               </RadioGroup>
             </div>
 
-            {/* Fauna */}
             <div className="space-y-3">
               <Label>Наличие фауны</Label>
               <RadioGroup
@@ -169,7 +163,6 @@ export function FilterPanel() {
               </RadioGroup>
             </div>
 
-            {/* Condition Category */}
             <div className="space-y-3">
               <Label>Категория состояния</Label>
               <div className="space-y-2">
@@ -185,14 +178,13 @@ export function FilterPanel() {
                       style={{ backgroundColor: CATEGORY_COLORS[category] }}
                     />
                     <Label htmlFor={`category-${category}`} className="font-normal cursor-pointer">
-                      Категория {category}
+                      {CONDITION_LABELS[category]}
                     </Label>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Date Range */}
             <div className="space-y-3">
               <Label>Дата паспорта</Label>
               <div className="space-y-2">

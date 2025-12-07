@@ -13,7 +13,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const { login } = useStore();
   const navigate = useNavigate();
 
@@ -21,8 +21,6 @@ export default function Login() {
     e.preventDefault();
     setError('');
     setIsLoading(true);
-
-    // Validation
     if (!username.trim()) {
       setError('Введите имя пользователя');
       setIsLoading(false);
@@ -34,11 +32,10 @@ export default function Login() {
       return;
     }
 
-    // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     const success = login(username, password);
-    
+
     if (success) {
       toast({
         title: 'Успешный вход',
@@ -48,14 +45,13 @@ export default function Login() {
     } else {
       setError('Неверное имя пользователя или пароль');
     }
-    
+
     setIsLoading(false);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/10 via-background to-accent/10 flex items-center justify-center p-4">
       <div className="w-full max-w-md animate-fade-in">
-        {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl water-gradient mb-4 shadow-lg">
             <Droplets className="h-8 w-8 text-primary-foreground" />
@@ -128,10 +124,7 @@ export default function Login() {
                   <p className="font-medium">Эксперт</p>
                   <p className="text-muted-foreground">expert / expert123</p>
                 </div>
-                <div className="p-2 rounded bg-muted">
-                  <p className="font-medium">Админ</p>
-                  <p className="text-muted-foreground">admin / admin123</p>
-                </div>
+
               </div>
             </div>
 

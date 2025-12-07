@@ -1,9 +1,48 @@
-export type WaterResourceType = 'lake' | 'canal' | 'reservoir';
+export type WaterResourceType = 'lake' | 'canal' | 'reservoir' | 'lock' | 'hydro-unit';
 export type WaterType = 'fresh' | 'non-fresh';
 export type FaunaPresence = 'yes' | 'no' | 'unknown';
 export type ConditionCategory = 1 | 2 | 3 | 4 | 5;
 export type PriorityLevel = 'high' | 'medium' | 'low';
 export type UserRole = 'guest' | 'expert';
+
+export interface PassportDetails {
+  geographical_location?: {
+    admin_area?: string;
+    admin_district?: string;
+    location_relative_to_settlement?: string;
+    boundaries?: string;
+  };
+  physical_characteristics?: {
+    length_m?: number;
+    width_m?: number;
+    area_ha?: number;
+    depth_max_m?: number | string;
+    depth_avg_m?: number | string;
+    depth_min_m?: number;
+  };
+  biological_characteristics?: {
+    overgrowth_degree?: {
+      surface_vegetation?: string;
+      underwater_vegetation?: string;
+    };
+    phytoplankton_development?: string;
+    fauna_composition?: {
+      ichthyofauna?: string;
+      mammals?: string;
+      invertebrates?: string;
+    };
+    commercial_fauna_composition?: {
+      ichthyofauna?: string;
+      mammals?: string;
+      invertebrates?: string;
+    };
+    fish_productivity_kg_ha?: {
+      ichthyofauna?: string;
+      mammals?: string;
+      invertebrates?: string;
+    };
+  };
+}
 
 export interface WaterObject {
   id: string;
@@ -20,6 +59,7 @@ export interface WaterObject {
   description?: string;
   area?: number;
   depth?: number;
+  passportDetails?: PassportDetails;
 }
 
 export interface User {
@@ -76,6 +116,8 @@ export const RESOURCE_TYPE_LABELS: Record<WaterResourceType, string> = {
   lake: 'Озеро',
   canal: 'Канал',
   reservoir: 'Водохранилище',
+  lock: 'Шлюз',
+  'hydro-unit': 'Гидроузел',
 };
 
 export const WATER_TYPE_LABELS: Record<WaterType, string> = {
@@ -101,4 +143,12 @@ export const PRIORITY_LABELS: Record<PriorityLevel, string> = {
   high: 'Высокий',
   medium: 'Средний',
   low: 'Низкий',
+};
+
+export const CONDITION_LABELS: Record<ConditionCategory, string> = {
+  1: 'Отлично',
+  2: 'Хорошо',
+  3: 'Нормально',
+  4: 'Плохо',
+  5: 'Критическая',
 };

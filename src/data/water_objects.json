@@ -1,0 +1,198 @@
+{
+  "hydro_technical_structures": [
+    {
+      "name": "Бухтарминский судоходный шлюз",
+      "region": "Восточно-Казахстанская область",
+      "resource_type": "Шлюз",
+      "water_type": "нет",
+      "fauna_presence": "нет",
+      "passport_date": "01.05.2022",
+      "technical_condition": 3,
+      "coordinates": "49°37′ с. ш. 83°28′ в. д."
+    },
+    {
+      "name": "Шульбинский судоходный шлюз",
+      "region": "Область Абай",
+      "resource_type": "Шлюз",
+      "water_type": "нет",
+      "fauna_presence": "нет",
+      "passport_date": "03.08.2022",
+      "technical_condition": 5,
+      "coordinates": "50°24′ с. ш. 81°04′ в. д."
+    },
+    {
+      "name": "Чаглинский гидроузел",
+      "region": "Северо-Казахстанская область",
+      "resource_type": "Гидроузел",
+      "water_type": "нет",
+      "fauna_presence": "нет",
+      "passport_date": "03.08.2020",
+      "technical_condition": 1,
+      "coordinates": "54°06′ с. ш. 69°08′ в. д."
+    }
+  ],
+  "water_bodies_lakes": [
+    {
+      "name": "Коскол",
+      "region": "Улытауская",
+      "resource_type": "озеро",
+      "water_type": "непресная",
+      "fauna_presence": "да",
+      "passport_date": "любая даты для теста",
+      "technical_condition": "состояние по формуле вычесляется",
+      "coordinates": {
+        "center": "N 49º31'21\", E 67º03'11\"",
+        "north": "N 49º31'58\", E 67º02'55\"",
+        "south": "N 49º30'37\" E 67º03'27\"",
+        "east": "N 49º31'27\", E 67º04'05\"",
+        "west": "N 49º31'11\", E 67º02'26\""
+      },
+      "passport_details": {
+        "geographical_location": {
+          "admin_area": "Улытауская область",
+          "admin_district": "Улытауский район",
+          "location_relative_to_settlement": "1,8 км З от села Коскол",
+          "boundaries": "центр_N 49º31'21\", E 67º03'11\", север N 49º31'58\", E 67º02'55\", юг N 49º30'37\" E 67º03'27\", восток N 49º31'27\", E 67º04'05\", запад N 49º31'11\", E 67º02'26\""
+        },
+        "physical_characteristics": {
+          "length_m": 2120,
+          "width_m": 2500,
+          "area_ha": 221,
+          "depth_max_m": "нет, высокая степень зарастаемости",
+          "depth_avg_m": "-",
+          "depth_min_m": 0.5
+        },
+        "biological_characteristics": {
+          "overgrowth_degree": {
+            "surface_vegetation": "до 5 %, слабо",
+            "underwater_vegetation": "до 10 %, слабо"
+          },
+          "phytoplankton_development": "сильно",
+          "fauna_composition": {
+            "ichthyofauna": "нет",
+            "mammals": "нет",
+            "invertebrates": "Ceriodaphnia reticulate, Acanthocyclops lanquidoides"
+          },
+          "commercial_fauna_composition": {
+            "ichthyofauna": "нет",
+            "mammals": "нет",
+            "invertebrates": "Ceriodaphnia reticulate, Acanthocyclops lanquidoides"
+          },
+          "fish_productivity_kg_ha": {
+            "ichthyofauna": "50кг/га",
+            "mammals": "нет",
+            "invertebrates": "1,25г/м³"
+          }
+        }
+      }
+    },
+    {
+      "name": "Камыстыкол",
+      "region": "Улытауская",
+      "resource_type": "озеро",
+      "water_type": "непресная",
+      "fauna_presence": "да",
+      "passport_date": "любая даты для теста",
+      "technical_condition": "состояние по формуле вычесляется",
+      "coordinates": {
+        "center": "N 49º34'09\", E 67º04'25\"",
+        "north": "N 49º34'41\", E 67º05'47\"",
+        "south": "N 49º33'27\" E 67º03'06\"",
+        "east": "N 49º33'27\", E 67º04'55\"",
+        "west": "N 49º34'50\", E 67º03'56\""
+      },
+      "passport_details": {
+        "geographical_location": {
+          "admin_area": "Улытауская область",
+          "admin_district": "Улытауский район",
+          "location_relative_to_settlement": "4,6 км Ю от села Коскол",
+          "boundaries": "центр_N 49º34'09\", E 67º04'25\", север N 49º34'41\", E 67º05'47\", юг N 49º33'27\" E 67º03'06\", восток N 49º33'27\", E 67º04'55\", запад N 49º34'50\", E 67º03'56\""
+        },
+        "physical_characteristics": {
+          "length_m": 4100,
+          "width_m": 2200,
+          "area_ha": 658,
+          "depth_max_m": "нет, высокая степень зарастаемости",
+          "depth_avg_m": "-",
+          "depth_min_m": 0.1
+        },
+        "biological_characteristics": {
+          "overgrowth_degree": {
+            "surface_vegetation": "до 5 %, слабо (камыш)",
+            "underwater_vegetation": "до 45 %, средние"
+          },
+          "phytoplankton_development": "слабо",
+          "fauna_composition": {
+            "ichthyofauna": "нет",
+            "mammals": "нет",
+            "invertebrates": "нет"
+          },
+          "commercial_fauna_composition": {
+            "ichthyofauna": "нет",
+            "mammals": "нет",
+            "invertebrates": "нет"
+          },
+          "fish_productivity_kg_ha": {
+            "ichthyofauna": "60кг/га",
+            "mammals": "нет",
+            "invertebrates": "нет"
+          }
+        }
+      }
+    },
+    {
+      "name": "Бараккол",
+      "region": "Улытауская",
+      "resource_type": "озеро",
+      "water_type": "непресная",
+      "fauna_presence": "да",
+      "passport_date": "любая даты для теста",
+      "technical_condition": "состояние по формуле вычесляется",
+      "coordinates": {
+        "center": "N 49º18'53\", E 67º16'32\"",
+        "north": "N 49º19'51\", E 67º17'08\"",
+        "south": "N 49º17'52\" E 67º16'13\"",
+        "east": "N 49º18'33\", E 67º17'40\"",
+        "west": "N 49º19'12\", E 67º14'57\""
+      },
+      "passport_details": {
+        "geographical_location": {
+          "admin_area": "Улытауская область",
+          "admin_district": "Улытауский район",
+          "location_relative_to_settlement": "25 км Ю-В от села Коскол",
+          "boundaries": "центр_N 49º18'53\", E 67º16'32\", север N 49º19'51\", E 67º17'08\", юг N 49º17'52\" E 67º16'13\", восток N 49º18'33\", E 67º17'40\", запад N 49º19'12\", E 67º14'57\""
+        },
+        "physical_characteristics": {
+          "length_m": 1600,
+          "width_m": 2800,
+          "area_ha": 3200,
+          "depth_max_m": 3.5,
+          "depth_avg_m": 0.9,
+          "depth_min_m": 0.5
+        },
+        "biological_characteristics": {
+          "overgrowth_degree": {
+            "surface_vegetation": "до 15 %, слабая",
+            "underwater_vegetation": "до 35%, слабая"
+          },
+          "phytoplankton_development": "сильно",
+          "fauna_composition": {
+            "ichthyofauna": "Карась серебряный  Carassius gibelio  Bloch",
+            "mammals": "нет",
+            "invertebrates": "Ветвистоусые рачки (Cladocera) Daphnia longispina, Коловратки (Rotatoria) Brachionus angularis"
+          },
+          "commercial_fauna_composition": {
+            "ichthyofauna": "Карась серебряный  Carassius gibelio  Bloch",
+            "mammals": "нет",
+            "invertebrates": "Ветвистоусые рачки (Cladocera) Daphnia longispina, Коловратки (Rotatoria) Brachionus angularis"
+          },
+          "fish_productivity_kg_ha": {
+            "ichthyofauna": "40 кг/га",
+            "mammals": "нет",
+            "invertebrates": "17,763г/м³"
+          }
+        }
+      }
+    }
+  ]
+}

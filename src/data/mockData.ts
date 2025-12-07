@@ -1,6 +1,13 @@
-import type { WaterObject, ConditionCategory, WaterResourceType, WaterType, FaunaPresence } from '@/types';
 
-export const mockWaterObjects: WaterObject[] = [
+
+import type { WaterObject, ConditionCategory, WaterResourceType, WaterType, FaunaPresence } from '@/types';
+import { convertJSONToWaterObjects } from './dataConverter';
+import waterObjectsJSON from './water_objects.json';
+
+// Преобразуем данные из JSON
+const jsonWaterObjects = convertJSONToWaterObjects(waterObjectsJSON);
+
+const existingMockWaterObjects: WaterObject[] = [
   {
     id: '1',
     name: 'Озеро Балхаш',
@@ -297,6 +304,11 @@ export const mockWaterObjects: WaterObject[] = [
   },
 ];
 
+export const mockWaterObjects: WaterObject[] = [
+  ...existingMockWaterObjects,
+  ...jsonWaterObjects,
+];
+
 export const getFilteredObjects = (
   objects: WaterObject[],
   filters: {
@@ -310,7 +322,7 @@ export const getFilteredObjects = (
     searchQuery?: string;
   }
 ): WaterObject[] => {
-  return objects.filter((obj) => {
+  const filtered = objects.filter((obj) => {
     // Region filter
     if (filters.region && obj.region !== filters.region) {
       return false;
@@ -359,4 +371,6 @@ export const getFilteredObjects = (
 
     return true;
   });
+
+  return filtered;
 };
